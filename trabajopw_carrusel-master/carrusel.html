@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GameHub - Tienda</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./style-carrusel.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: transparent;">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img src="#" alt="Logo">
+                GameHub
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item"><a class="nav-link" href="#">Casa</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Categorias</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Plataforma</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Ofertas especiales</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Ofertas especiales</a></li>
+                    <li class="nav-item"> <div class="hover-container">
+                        <a class="nav-link" href="#">juegos mejores valorados</a>
+                    <div id="mejorValorados" class="juegos-container"></div>
+                     </div>
+                   
+                </ul>
+                <div class="d-flex">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Buscar">
+                        <button class="btn btn-outline-primary" type="button">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                    <button class="btn btn-link position-relative ms-3 cart-icon" id="cartButton">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="cart-count" id="cartCount">0</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Carrito Sidebar -->
+    <div class="cart-overlay" id="cartOverlay"></div>
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="p-4">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h3 class="mb-0">Carrito de compras</h3>
+                <button class="btn btn-close btn-close-white" id="closeCartBtn"></button>
+            </div>
+            <div class="cart-items" id="cartItems">
+                <div class="text-center py-5">
+                    <i class="fas fa-shopping-cart fa-3x mb-3" style="color: var(--secondary-color);"></i>
+                    <p>Nada en el carrito</p>
+                </div>
+            </div>
+            <div class="mt-4 pt-3 border-top">
+                <div class="d-flex justify-content-between mb-3">
+                    <h5>Total:</h5>
+                    <h5 id="cartTotal">$0.00</h5>
+                </div>
+                <div class="d-grid gap-2">
+                    <button class="btn btn-primary" id="checkoutBtn">Confirmar Orden</button>
+                    <button class="btn btn-outline-danger" id="clearCartBtn">Cancelar Orden</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contenido Principal -->
+    <div class="container mt-0">
+        <div id="fixedSizeCarousel" class="carousel slide fixed-size-carousel" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <div class="carousel-image-container">
+                        <img src="https://media.es.wired.com/photos/67890fcf8803b47ac6879177/3:2/pass/Nintendo_Lead.jpg" class="d-block" alt="Imagen 1">
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="carousel-image-container">
+                        <img src="https://via.placeholder.com/800x600/FF0000" class="d-block" alt="Imagen 2">
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="carousel-image-container">
+                        <img src="https://via.placeholder.com/600x400/00FF00" class="d-block" alt="Imagen 3">
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#fixedSizeCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Anterior</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#fixedSizeCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Siguiente</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- Juegos -->
+    <section class="game-carousel">
+        <div class="container">
+            <h2 class="section-title">Featured Games</h2>
+            <div class="row g-4">
+                <div class="col-6 col-md-4 col-lg-3">
+                    <div class="game-card" data-bs-toggle="modal" data-bs-target="#gameModal" data-game-id="1">  
+                        <img src="https://via.placeholder.com/300x180/00ff88/000000?text=Game+1" alt="Game 1" class="game-img">
+                        <h3 class="game-title">Game 1</h3>
+                    </div>
+                </div>
+                <!-- Agrega más juegos aquí con data-game-id correspondiente -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal del Juego -->
+    <div class="modal fade game-modal" id="gameModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-title" id="gameModalTitle">Nombre del juego</h2>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row mb-4">
+                        <div class="col-md-8">
+                            <h4 id="gameTitle">Nombre del juego</h4>
+                            <p id="gameDescription">Descripción del juego</p>
+                            <p><b>ESTE PRODUCTO PUEDE INCLUIR CONTENIDO NO APTO PARA TODAS LAS EDADES O PARA VERLO EN EL TRABAJO.</b></p>
+                        </div>
+                        <div class="col-md-4 text-center">
+                            <div class="price-tag mb-3" id="gamePrice">$0.00</div>
+                            <div class="rating mb-3">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                                <span class="ms-2">4.8/5</span>
+                            </div>
+                            <button class="btn btn-purchase" id="addToCartBtn">
+                                <i class="fas fa-cart-plus me-2"></i>Comprar ahora
+                            </button>
+                        </div>
+                    </div>
+                    <!-- Trailer del juego -->
+                    <h4 class="mb-3">Trailer del Juego</h4>
+                    <div class="game-trailer mb-4">
+                        <iframe width="100%" height="100%" src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                    
+                    <!-- Imágenes de gameplay -->
+                    <h4 class="mb-3">Imagenes del juego</h4>
+                    <div class="row gameplay-images">
+                        <div class="col-6 col-md-3">
+                            <img src="https://via.placeholder.com/300x200/333333/00ff88?text=Gameplay+1" alt="Gameplay 1">
+                        </div>
+                        <div class="col-6 col-md-3">
+                            <img src="https://via.placeholder.com/300x200/333333/00ff88?text=Gameplay+2" alt="Gameplay 2">
+                        </div>
+                        <div class="col-6 col-md-3">
+                            <img src="https://via.placeholder.com/300x200/333333/00ff88?text=Gameplay+3" alt="Gameplay 3">
+                        </div>
+                        <div class="col-6 col-md-3">
+                            <img src="https://via.placeholder.com/300x200/333333/00ff88?text=Gameplay+4" alt="Gameplay 4">
+                        </div>
+                    </div>
+                    
+                    <!-- Requisitos del sistema -->
+                    <h4 class="mt-4 mb-3">Requerimientos del sistema</h4>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h5>Minimo</h5>
+                            <ul>
+                                <li>OS: Windows 10</li>
+                                <li>Processor: Intel Core i5</li>
+                                <li>Memory: 8 GB RAM</li>
+                                <li>Graphics: NVIDIA GTX 970</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <h5>Recomendado</h5>
+                            <ul>
+                                <li>OS: Windows 11</li>
+                                <li>Processor: Intel Core i7</li>
+                                <li>Memory: 16 GB RAM</li>
+                                <li>Graphics: NVIDIA RTX 2060</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notificación -->
+    <div id="customAlert" class="position-fixed bottom-0 end-0 m-3" style="z-index: 1100; display: none;">
+        <div class="alert alert-success d-flex align-items-center" role="alert" style="background-color: var(--primary-color); color: var(--dark-color); border: none;">
+            <i class="fas fa-check-circle me-2"></i>
+            <div id="alertMessage"></div>
+        </div>
+    </div>
+    <!-- Modal de Confirmación -->
+    <div class="modal fade" id="confirmModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content" style="background-color: var(--light-color); color: white;">
+                <div class="modal-header border-0">
+                    <h5 class="modal-title">Confirmación</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body text-center">
+                    <p id="confirmMessage">¿Estás seguro de que quieres vaciar el carrito?</p>
+                </div>
+                <div class="modal-footer border-0 justify-content-center">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-danger" id="confirmAction">Vaciar carrito</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="./carrito.js"></script>
+</body>
+</html>

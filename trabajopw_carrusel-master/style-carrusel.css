@@ -1,0 +1,328 @@
+:root {
+    --primary-color: #00ff88;
+    --secondary-color: #007944;
+    --dark-color: #121212;
+    --light-color: #1e1e1e;
+}
+        
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--dark-color);
+    color: var(--primary-color);
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+        
+.navbar-brand {
+    font-weight: 600;
+    font-size: 1.8rem;
+    color: var(--primary-color);
+    display: flex;
+    align-items: center;
+}
+
+.navbar-brand img {
+    height: 40px;
+    margin-right: 10px;
+}
+
+.links a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: all 0.3s;
+}
+
+.links a:hover {
+    
+    color: var(--primary-color);
+    text-decoration: underline;
+}
+
+.divider {
+    border-top: 1px solid var(--secondary-color);
+    position: relative;
+    margin: 20px 0;
+}
+
+.divider::after {
+    content: "o";
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--light-color);
+    padding: 0 10px;
+    color: var(--primary-color);
+}
+/* Estilos para el carrusel con tamaño fijo */
+.fixed-size-carousel {
+    width: 800px; /* Ancho fijo */
+    height: 350px; /* Alto fijo */
+    margin: 0 auto; /* Centrar el carrusel */
+    overflow: hidden; /* Oculta partes de la imagen que sobresalgan */
+    background-color: #000; /* Fondo negro para áreas no cubiertas por la imagen */
+}
+
+/* Contenedor de la imagen para centrarla */
+.carousel-image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+/* La imagen mantiene su tamaño original */
+.carousel-image-container img {
+    max-width: none; /* Anula el max-width de Bootstrap */
+    max-height: none; /* Anula el max-height de Bootstrap */
+    object-fit: contain; /* Muestra toda la imagen sin recortar */
+}
+.game-carousel {
+    background-color: var(--dark-color);
+    padding: 40px 0;
+    color: white;
+}
+
+.game-card {
+    background-color: var(--light-color);
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+    border: 2px solid #333;
+    height: 100%;
+}
+
+.game-card:hover {
+    transform: translateY(-10px);
+    border-color: #00ff88;
+}
+
+.game-img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+.game-title {
+    font-size: 1.2rem;
+    padding: 15px;
+    margin: 0;
+    color: #00ff88;
+}
+
+.section-title {
+    color: #00ff88;
+    margin-bottom: 30px;
+    font-size: 2rem;
+    text-align: center;
+    position: relative;
+}
+
+.section-title::after {
+    content: '';
+    display: block;
+    width: 100px;
+    height: 3px;
+    background: #00ff88;
+    margin: 10px auto;
+}
+ .game-modal .modal-content {
+    background-color: #1a1a1a;
+    color: white;
+    border-radius: 15px;
+    border: 1px solid #00ff88;
+}
+
+.game-modal .modal-header {
+    border-bottom: 1px solid #333;
+}
+
+.game-modal .modal-title {
+    color: #00ff88;
+    font-weight: bold;
+}
+
+.game-trailer {
+    width: 100%;
+    height: 400px;
+    border-radius: 10px;
+    background-color: #000;
+}
+
+.gameplay-images img {
+    width: 100%;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.rating {
+    color: #ffcc00;
+    font-size: 1.5rem;
+}
+
+.price-tag {
+    background-color: #00ff88;
+    color: #121212;
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.btn-purchase {
+    background-color: #00ff88;
+    color: #121212;
+    font-weight: bold;
+    border: none;
+    padding: 10px 25px;
+    border-radius: 30px;
+    transition: all 0.3s;
+}
+
+.btn-purchase:hover {
+    background-color: #00cc6a;
+    transform: scale(1.05);
+}
+/* Carrito icono */
+.cart-icon {
+    position: relative;
+    font-size: 1.5rem;
+    color: white;
+}
+
+.cart-count {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    background-color: var(--primary-color);
+    color: var(--dark-color);
+    border-radius: 50%;
+    width: 22px;
+    height: 22px;
+    font-size: 0.8rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
+
+/* Carrito de compras */
+.cart-sidebar {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    max-width: 400px;
+    height: 70vh;
+    background-color: var(--light-color);
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.3);
+    transform: translateY(100%);
+    transition: transform 0.3s ease-out;
+    z-index: 1050;
+    overflow-y: auto;
+}
+
+.cart-sidebar.show {
+    transform: translateY(0);
+}
+
+.cart-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1040;
+    display: none;
+}
+
+.cart-overlay.show {
+    display: block;
+}
+
+.cart-item-img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+/* Animaciones para notificaciones */
+@keyframes slideIn {
+    from { transform: translateY(100px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes fadeOut {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+
+.custom-notification {
+    animation: slideIn 0.3s ease-out;
+    max-width: 350px;
+}
+
+.fade-out {
+    animation: fadeOut 0.5s ease-out forwards;
+}
+
+
+
+
+.hover-container {
+      position: relative;
+      display: inline-block;
+}
+
+.hover-title {
+      cursor: pointer;
+      background-color: #444;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 8px;
+}
+
+.juegos-container {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: #121212 ;
+      border: 1px solid  #00ff88;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+      padding: 15px;
+      z-index: 100;
+      width: 800px;
+      flex-wrap: wrap;
+      gap: 15px;
+}
+
+.juego {
+      border: 1px solid #00ff88;
+      border-radius: 10px;
+      width: 180px;
+      padding: 10px;
+      text-align: center;
+      background-color: #1e1e1e;
+}
+
+.juego img {
+      width: 100%;
+      height: 120px;
+      object-fit: cover;
+      border-radius: 6px;
+}
+
+.hover-container:hover .juegos-container {
+      display: flex;
+}
+
+
